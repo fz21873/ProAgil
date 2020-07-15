@@ -1,0 +1,28 @@
+
+<div align='center'>
+
+<table border='1'  width='600px' >
+<tr align="center"   style='color:#000; font-weight: bold;'>
+  <td>Tema</td>
+  <td>Local</td>
+  <td>Data</td>
+  <td>Pessoas</td>
+  <td>Lote</td>
+</tr>
+<tr>
+ <tr *ngFor="let event of eventos">
+ 
+    <td>  {{event.tema}}</td>
+    <td> {{event.local}}</td>
+    <td> {{event.dataEvento}}</td>
+    <td> {{event.qtdPessoas}}</td>
+    <td> {{event.lote}}</td>
+    
+  </tr>
+  
+</table>
+
+</div>
+ 
+ 
+
