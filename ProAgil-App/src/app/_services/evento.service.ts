@@ -9,22 +9,36 @@ import { Evento } from '../_model/Evento';
 export class EventoService {
   baseURL = 'http://localhost:5000/api/evento';
 
-constructor(private http: HttpClient ) { }
+  constructor(private http: HttpClient ) { }
 
+  getAllEvento(): Observable<Evento[]> {
 
- getAllEvento(): Observable<Evento[]> {
+    return this.http.get<Evento[]>(this.baseURL);
+  }
 
-   return this.http.get<Evento[]>(this.baseURL);
+  getEventoByTema(tema: string): Observable<Evento[]> {
+
+    return this.http.get<Evento[]>(`${this.baseURL}/getByTema/${tema}`);
+  }
+
+  getEventoById(id: number): Observable<Evento[]> {
+
+    return this.http.get<Evento[]>(`${this.baseURL}/${id}`);
+  }
+
+  // tslint:disable-next-line:typedef
+  postEvento(evento: Evento){
+    return this.http.post(this.baseURL, evento);
 }
 
-getEventoByTema(tema: string): Observable<Evento[]> {
+  // tslint:disable-next-line:typedef
+  putEvento(evento: Evento){
 
-  return this.http.get<Evento[]>(`${this.baseURL}/getByTema/${tema}`);
+  return this.http.put(`${this.baseURL}/${evento.id}`, evento);
 }
+ // tslint:disable-next-line:typedef
+ deleteEvento(id: number){
 
-getEventoById(id: number): Observable<Evento[]> {
-
-  return this.http.get<Evento[]>(`${this.baseURL}/${id}`);
+  return this.http.delete(`${this.baseURL}/${id}`);
 }
-
 }
