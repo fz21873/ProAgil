@@ -7,7 +7,7 @@ import { Evento } from '../_model/Evento';
   providedIn: 'root'
 })
 export class EventoService {
-  baseURL = 'http://localhost:5000/api/evento';
+  baseURL = 'http://localhost:5000/vd/evento';
 
   constructor(private http: HttpClient ) { }
 

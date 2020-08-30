@@ -1,3 +1,5 @@
+using System.Runtime.CompilerServices;
+using System.Diagnostics.Tracing;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
@@ -11,7 +13,8 @@ namespace ProAgil.Repository
        private readonly ProAgilContext _context;
         public ProAgilRepository(ProAgilContext contex)
         {
-            _context=contex;
+            
+            _context= contex;
             _context.ChangeTracker.QueryTrackingBehavior=QueryTrackingBehavior.NoTracking;
         }
         public void Add<T>(T entity) where T : class
@@ -40,9 +43,12 @@ namespace ProAgil.Repository
         //Evento
         public async Task<Evento[]> GetAllEventoAsync(bool includePalestrante = false)
         {
+            
            IQueryable<Evento> query= _context.Eventos
+                  
                   .Include(c => c.Lotes)
                   .Include(c => c.RedesSociais);
+            
 
             if(includePalestrante){
               
@@ -54,7 +60,7 @@ namespace ProAgil.Repository
             }
 
             query = query.AsNoTracking()
-            .OrderByDescending(c => c.DataEvento);
+            .OrderBy(c => c.Id);
             return await query.ToArrayAsync();
             
 

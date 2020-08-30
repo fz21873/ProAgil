@@ -1,17 +1,19 @@
+
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
+//using Microsoft.EntityFrameworkCore.DataEncryption.I;
 namespace ProAgil.Domain
 {
     public class Evento
     {
-        
-        
-        public int Id { get; set; }
+          
+        public int Id { get;set;}
         
         public string Tema { get; set; }
-
-        public string Local { get; set; }
+        
+        public string Local {get ; set;}
 
         public DateTime  DataEvento { get; set; }
        
@@ -21,6 +23,7 @@ namespace ProAgil.Domain
 
         public string Telefone { get; set; }
 
+        
         public string Email { get; set; }
 
         public List<Lote> Lotes { get; set; }
@@ -30,4 +33,5 @@ namespace ProAgil.Domain
         public List<PalestranteEvento> PalestrantesEventos { get; set; }
     }
 
+   
 }

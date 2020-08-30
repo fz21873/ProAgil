@@ -1,7 +1,10 @@
 <Project Sdk="Microsoft.NET.Sdk">
-
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
   </PropertyGroup>
-
+  <ItemGroup>
+    <PackageReference Include="EntityFrameworkCore.DataEncryption" Version="1.1.0"/>
+    <PackageReference Include="Json.Serialization" Version="1.0.0"/>
+    <PackageReference Include="Newtonsoft.Json" Version="11.0.2"/>
+  </ItemGroup>
 </Project>

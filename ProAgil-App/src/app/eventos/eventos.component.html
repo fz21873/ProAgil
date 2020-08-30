@@ -3,7 +3,7 @@
 <div class="d-flex">
   <div class="form-inline mr-auto">
     <div class="form-group mb-2">
-      <label class="mr-2">Filtro</label><input type="text" class="form-control mr-2" 
+      <label class="mr-2">Filtro</label><input type="text" class="form-control mr-2"
       placeholder="buscar"
       [(ngModel)]="filtroLista">
     </div>
@@ -35,14 +35,14 @@
   <tbody *ngIf="eventos && eventos.length">
     <tr *ngFor="let evento of eventosFiltrados">
       <td><img  *ngIf="mostrarImagem"
-        src= "http://localhost:5000/img/{{evento.imagemURL}}"  
+        src= "http://localhost:5000/img/{{evento.imagemURL}}"
         [style.width.px]="imagemLargura"
         [style.margin.px]="imagemMargin" >
       </td>
       <td>{{evento.id}}</td>
       <td>{{evento.tema}}</td>
       <td>{{evento.local  }}</td>
-      <td>{{evento.dataEvento | DateTimeFormatPipe}}</td>
+      <td>{{evento.dataEvento|DateTimeFormatPipe }}</td>
       <td>{{evento.qtdPessoas}}</td>
       <td>
         <div *ngIf="!evento.lotes.length">
@@ -54,17 +54,17 @@
       </td>
       <td>
         <div class="btn-group">
-          <button button class="btn btn-sm btn-success" 
+          <button button class="btn btn-sm btn-success"
           tooltip="Editar" (click)="editarEvento(evento,template)">
           <i class="fa fa-edit"></i>
         </button>
-        <button class="btn btn-sm btn-danger" 
+        <button class="btn btn-sm btn-danger"
          tooltip="Excluir"  (click)="excluirEvento(evento,confirm)">
           <i class="fa fa-eraser"></i>
         </button>
-        
+
       </div>
-      
+
     </td>
   </tr>
 </tbody>
@@ -88,12 +88,12 @@ role="dialog" aria-labelledby="dialog-sizes-name1">
       </button>
     </div>
     <div class="modal-body">
-      
+
       <form [formGroup]="registerForm">
         <div class="form-row">
           <div class="form-group col-md-12">
             <label >Tema</label>
-            <input type="text" class="form-control" 
+            <input type="text" class="form-control"
             [ngClass]="{'is-invalid': registerForm.get('tema').errors && registerForm.get('tema').touched}"
             formControlName="tema" placeholder="Insira o Tema">
             <div  *ngIf="registerForm.get('tema').hasError('required')
@@ -110,11 +110,11 @@ role="dialog" aria-labelledby="dialog-sizes-name1">
       </div>
     </div>
   </div>
-  
+
   <div class="form-row">
     <div class="form-group col-md-8">
       <label>Local</label>
-      <input type="text" class="form-control" 
+      <input type="text" class="form-control"
       [ngClass]="{'is-invalid': registerForm.get('local').errors && registerForm.get('local').touched}"
       placeholder="Insira o Local" formControlName="local">
       <div *ngIf="registerForm.get('local').hasError('required')
@@ -137,7 +137,7 @@ role="dialog" aria-labelledby="dialog-sizes-name1">
 <div class="form-row">
   <div class="form-group col-md-3">
     <label >Qtd Pessoas</label>
-    <input type="text" class="form-control" 
+    <input type="text" class="form-control"
     [ngClass]="{'is-invalid': registerForm.get('qtdPessoas').errors && registerForm.get('qtdPessoas').touched}"
     placeholder="Insira a Qtd Pessoas" formControlName="qtdPessoas">
     <div *ngIf="registerForm.get('qtdPessoas').hasError('required')
@@ -151,7 +151,7 @@ role="dialog" aria-labelledby="dialog-sizes-name1">
 </div>
 <div class="form-group col-md-9">
   <label>Imagem</label>
-  <input type="text" class="form-control" 
+  <input type="text" class="form-control"
   [ngClass]="{'is-invalid': registerForm.get('imagemURL').errors && registerForm.get('imagemURL').touched}"
   placeholder="Insira a Imagem"formControlName="imagemURL">
   <div *ngIf="registerForm.get('imagemURL').hasError('required')
@@ -173,7 +173,7 @@ role="dialog" aria-labelledby="dialog-sizes-name1">
 </div>
 <div class="form-group col-md-8">
   <label>Email</label>
-  <input type="text" class="form-control" 
+  <input type="text" class="form-control"
   [ngClass]="{'is-invalid': registerForm.get('email').errors && registerForm.get('email').touched}"
   placeholder="Insira o Email" formControlName="email">
   <div *ngIf="registerForm.get('email').hasError('required')
@@ -191,7 +191,7 @@ Debeser um e-mail valido.
 </div>
 
 <div class="modal-footer d-flex">
-  
+
   <button class="btn btn-secondary" (click)="template.hide()">
     Fechar
   </button>
