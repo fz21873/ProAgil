@@ -1,18 +1,26 @@
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
-import { AppComponent } from './app.component';
-import { EventosComponent } from './eventos/eventos.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ToastrModule } from 'ngx-toastr';
+
 import {HttpClientModule} from '@angular/common/http';
 import { HeaderComponent } from './header/header.component';
-import { DateTimeFormatPipePipe} from './_helps/DateTimeFormatPipe.pipe';
 import { TooltipModule } from 'ngx-bootstrap/tooltip/';
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 import { ModalModule } from 'ngx-bootstrap/modal';
 import { EventoService } from './_services/evento.service';
+import { DateTimeFormatPipePipe } from './_helps/DateTimeFormatPipe.pipe';
 import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
+
+import { AppComponent } from './app.component';
+import { NavComponent } from './nav/nav.component';
+import { EventosComponent } from './eventos/eventos.component';
+import { PalestrantesComponent } from './palestrantes/palestrantes.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
+import { ContatosComponent } from './contatos/contatos.component';
+import { TituloComponent } from './_shared/titulo/titulo.component';
 
 
 
@@ -20,9 +28,15 @@ import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
 @NgModule({
    declarations: [
       AppComponent,
+      NavComponent,
       EventosComponent,
+      PalestrantesComponent,
+      ContatosComponent,
+      DashboardComponent,
+      TituloComponent,
       HeaderComponent,
       DateTimeFormatPipePipe
+
    ],
    imports: [
       BrowserModule,
@@ -33,8 +47,13 @@ import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
       AppRoutingModule,
       HttpClientModule,
       FormsModule,
+      ReactiveFormsModule,
       BrowserAnimationsModule,
-      ReactiveFormsModule
+      ToastrModule.forRoot({
+       timeOut: 3000,
+       preventDuplicates: true,
+       progressBar: true
+      }),
    ],
    providers: [
       EventoService

@@ -1,6 +1,7 @@
 import { Lote } from './Lote';
 import { RedeSocial } from './RedeSocial';
 import { Palestrante } from './Palestrante';
+import { DateFormatter } from 'ngx-bootstrap/datepicker';
 
 export interface Evento{
      id: number ;
