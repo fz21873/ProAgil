@@ -1,7 +1,5 @@
-using System.Collections;
-using System.Linq;
-using System.Xml.Schema;
-using System.Reflection.Emit;
+using System.Net.Http.Headers;
+using System.IO;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -9,7 +7,7 @@ using ProAgil.Domain;
 using ProAgil.Repository;
 using AutoMapper;
 using ProAgil.WebAPI.Dtos;
-using System.Collections.Generic;
+
 
 namespace ProAgil.WebAPI.Controllers
 {
@@ -48,6 +46,37 @@ namespace ProAgil.WebAPI.Controllers
 
         }
 
+
+
+        [HttpPost("upload")]
+                public async Task<IActionResult> Upload()
+                {
+
+                    try
+                    {
+                        var file = Request.Form.Files[0];
+                        var folderName = Path.Combine("Resources","Images");
+                        var pathSave = Path.Combine(Directory.GetCurrentDirectory(),folderName);
+                        if(file.Length>0){
+
+                            var fileName = ContentDispositionHeaderValue.Parse(file.ContentDisposition).FileName;
+                            var fullPath = Path.Combine(pathSave,fileName.Replace("\""," ").Trim());
+                            using (var stream = new FileStream(fullPath, FileMode.Create))
+                            {
+                                file.CopyTo(stream);
+                            }
+                        }
+                        return  Ok();
+                    }
+                    catch (System.Exception ex)
+                    {
+                        
+                        return this.StatusCode(StatusCodes.Status500InternalServerError,$"Banco Dados Falho  {ex.Message}");
+                    }
+                    
+                    return BadRequest("Error ao tentar realizar upload");
+
+                }
 
         // GET id
         [HttpGet("{EventoId}")]

@@ -1,32 +1,27 @@
-﻿using System.Security.AccessControl;
-using System.Text;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿
+using System.IO;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Logging;
-using Microsoft.Extensions.Options;
 using Microsoft.EntityFrameworkCore;
 using ProAgil.Repository;
-using Microsoft.AspNetCore.Authentication.JwtBearer;
-using Microsoft.IdentityModel.Tokens;
 using AutoMapper;
+using Microsoft.Extensions.FileProviders;
+using Microsoft.AspNetCore.Http;
 
 namespace ProAgil.WebAPI
 {
     public class Startup
     {
-        public Startup(IConfiguration configuration)
+         
+        public Startup(IConfiguration configuration) 
         {
-            Configuration = configuration;
+            this.Configuration = configuration;
+               
         }
-
+        
         public IConfiguration Configuration { get; }
 
         // This method gets called by the runtime. Use this method to add services to the container.
@@ -78,6 +73,10 @@ namespace ProAgil.WebAPI
            // app.UseHttpsRedirection();
             app.UseCors(x => x.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader());
             app.UseStaticFiles();
+            app.UseStaticFiles(new StaticFileOptions(){
+                 FileProvider = new  PhysicalFileProvider(Path.Combine(Directory.GetCurrentDirectory(),@"Resources")),
+                 RequestPath = new PathString("/Resources")
+             });
            // app.UseAuthentication();
             app.UseMvc();
         }
