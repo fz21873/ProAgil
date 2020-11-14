@@ -11,7 +11,7 @@ using ProAgil.WebAPI.Dtos;
 
 namespace ProAgil.WebAPI.Controllers
 {
-    [Route("vd/[controller]")]
+    [Route("api/[controller]")]
     [ApiController] 
     public class EventoController:ControllerBase
     {
@@ -71,7 +71,7 @@ namespace ProAgil.WebAPI.Controllers
                     catch (System.Exception ex)
                     {
                         
-                        return this.StatusCode(StatusCodes.Status500InternalServerError,$"Banco Dados Falho  {ex.Message}");
+                       return this.StatusCode(StatusCodes.Status500InternalServerError,$"Banco Dados Falho  {ex.Message}");
                     }
                     
                     return BadRequest("Error ao tentar realizar upload");
