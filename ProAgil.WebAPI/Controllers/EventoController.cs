@@ -7,12 +7,12 @@ using ProAgil.Domain;
 using ProAgil.Repository;
 using AutoMapper;
 using ProAgil.WebAPI.Dtos;
-
+using Microsoft.AspNetCore.Authorization;
 
 namespace ProAgil.WebAPI.Controllers
 {
-    [Route("api/[controller]")]
     [ApiController] 
+    [Route("api/[controller]")]
     public class EventoController:ControllerBase
     {
 
@@ -28,6 +28,7 @@ namespace ProAgil.WebAPI.Controllers
 
         // GET ALL
         [HttpGet]
+        [AllowAnonymous]
         public async Task<IActionResult> Get()
         {
 

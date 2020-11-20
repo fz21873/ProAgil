@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Evento } from '../_model/Evento';
 
@@ -7,9 +7,9 @@ import { Evento } from '../_model/Evento';
   providedIn: 'root'
 })
 export class EventoService {
-  baseURL = 'http://localhost:5000/vd/evento';
+  baseURL = 'http://localhost:5000/api/evento';
 
-  constructor(private http: HttpClient ) { }
+  constructor(private http: HttpClient ) {}
 
   getAllEvento(): Observable<Evento[]> {
 
@@ -36,7 +36,7 @@ export class EventoService {
 
   // tslint:disable-next-line:typedef
   postEvento(evento: Evento){
-    return this.http.post(this.baseURL, evento);
+    return this.http.post(this.baseURL, evento );
 }
 
   // tslint:disable-next-line:typedef

@@ -9,6 +9,7 @@ export class PalestrantesComponent implements OnInit {
   titulo = 'Palestrantes';
   constructor() { }
 
+  // tslint:disable-next-line:typedef
   ngOnInit() {
   }
 

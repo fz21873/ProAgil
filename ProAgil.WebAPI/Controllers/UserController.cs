@@ -40,10 +40,17 @@ namespace ProAgil.WebAPI.Controllers
 
 
         [HttpGet("GetUser")]
-       // [AllowAnonymous]
+        [AllowAnonymous]
         public async Task<IActionResult> GetUser()
         {
             return Ok(new UserDto());
+         // var   userDto = new  UserDto
+       /* var  userLogin = new  UserLoginDto();
+            var user = await _userManager.FindByNameAsync(userLogin.UserName);
+            var result = await _signInManager.CheckPasswordSignInAsync(user, userLogin.Password, false);
+
+            return Ok(result);*/
+
         }
 
 
@@ -93,7 +100,7 @@ namespace ProAgil.WebAPI.Controllers
                     var userToReturn = _mapper.Map<UserLoginDto>(appUser);
 
                     return Ok( new {
-                        toke = GenerateJWToke(appUser).Result,
+                        token = GenerateJWToke(appUser).Result,
                         user = userToReturn
                     });
                 }

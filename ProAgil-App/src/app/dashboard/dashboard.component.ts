@@ -9,6 +9,7 @@ export class DashboardComponent implements OnInit {
 
   constructor() { }
 
+  // tslint:disable-next-line:typedef
   ngOnInit() {
   }
 

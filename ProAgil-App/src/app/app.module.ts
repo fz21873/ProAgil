@@ -5,7 +5,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
 
-import {HttpClientModule} from '@angular/common/http';
+import {HttpClientModule, HTTP_INTERCEPTORS} from '@angular/common/http';
 import { HeaderComponent } from './header/header.component';
 import { TooltipModule } from 'ngx-bootstrap/tooltip/';
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
@@ -21,7 +21,10 @@ import { PalestrantesComponent } from './palestrantes/palestrantes.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { ContatosComponent } from './contatos/contatos.component';
 import { TituloComponent } from './_shared/titulo/titulo.component';
-
+import { UserComponent } from './user/user.component';
+import { LoginComponent } from './user/login/login.component';
+import { RegistrationComponent } from './user/registration/registration.component';
+import { AuthInterceptor } from 'src/app/auth/auth.interceptor';
 
 
 
@@ -34,9 +37,10 @@ import { TituloComponent } from './_shared/titulo/titulo.component';
       ContatosComponent,
       DashboardComponent,
       TituloComponent,
-      HeaderComponent,
+      UserComponent,
+      LoginComponent,
+      RegistrationComponent,
       DateTimeFormatPipePipe
-
    ],
    imports: [
       BrowserModule,
@@ -56,7 +60,13 @@ import { TituloComponent } from './_shared/titulo/titulo.component';
       }),
    ],
    providers: [
-      EventoService
+      EventoService,
+      {
+        provide: HTTP_INTERCEPTORS,
+        useClass: AuthInterceptor,
+        multi: true
+
+      }
    ],
    bootstrap: [
       AppComponent
