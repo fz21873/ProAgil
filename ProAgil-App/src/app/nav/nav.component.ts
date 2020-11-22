@@ -30,6 +30,7 @@ export class NavComponent implements OnInit {
   // tslint:disable-next-line:typedef
   logout(){
     localStorage.removeItem('token');
+    localStorage.removeItem('usuario');
     this.toastr.show('Vocé esta Deslogado!');
     this.router.navigate(['/user/login']);
   }
