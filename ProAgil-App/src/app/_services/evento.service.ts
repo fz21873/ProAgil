@@ -28,7 +28,8 @@ export class EventoService {
 // tslint:disable-next-line:typedef
   postUpload(file: File, name: string){
 
-    const fileToUpload =  file[0] as File;
+    // tslint:disable-next-line:no-angle-bracket-type-assertion
+    const fileToUpload =  <File> file[0];
     const formData = new FormData();
     formData.append('file', fileToUpload, name);
     return this.http.post(`${this.baseURL}/upload`, formData);

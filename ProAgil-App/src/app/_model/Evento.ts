@@ -3,7 +3,9 @@ import { RedeSocial } from './RedeSocial';
 import { Palestrante } from './Palestrante';
 import { DateFormatter } from 'ngx-bootstrap/datepicker';
 
-export interface Evento{
+export class Evento{
+
+    constructor(){}
      id: number ;
      tema: string ;
      local: string ;
