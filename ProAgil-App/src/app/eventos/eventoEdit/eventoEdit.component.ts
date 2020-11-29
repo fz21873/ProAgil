@@ -131,7 +131,7 @@ export class EventoEditComponent implements OnInit {
     salvarEvento(): void{
 
       this.evento = Object.assign({ id: this.evento.id }, this.registerForm.value);
-      this.evento.imagemURL = this.fileNameToUpdate.split('\\', 3).toString();
+      this.evento.imagemURL = this.fileNameToUpdate;
 
       this.uploadImagem();
 

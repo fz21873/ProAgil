@@ -34,4 +34,9 @@ export class NavComponent implements OnInit {
     this.toastr.show('Vocé esta Deslogado!');
     this.router.navigate(['/user/login']);
   }
+
+  // tslint:disable-next-line:typedef
+  showMenu(){
+    return this.router.url !== '/user/login';
+  }
 }
