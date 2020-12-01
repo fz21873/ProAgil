@@ -3,7 +3,6 @@
     <TargetFramework>netstandard2.0</TargetFramework>
   </PropertyGroup>
   <ItemGroup>
-    <PackageReference Include="EntityFrameworkCore.DataEncryption" Version="1.1.0"/>
     <PackageReference Include="Json.Serialization" Version="1.0.0"/>
     <PackageReference Include="Newtonsoft.Json" Version="11.0.2"/>
     <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="2.2.0"/>
